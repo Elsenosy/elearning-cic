@@ -27,3 +27,16 @@ Route::get('/test', function(){
 // });
 
 Route::get('/blade', 'HomeController@index');
+
+Route::get('/users/{id?}', function($id=null){
+    // Get all request queries
+    $allQueries = request()->query();
+    dump($allQueries);
+    dump(request()->id);
+    dump(request()->is('users'));
+    dump("ID is: ".$id);
+
+    dump(request()->has('desc'));
+});
+
+Route::get('/instructors', 'InstructorController@index');
