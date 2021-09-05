@@ -39,4 +39,6 @@ Route::get('/users/{id?}', function($id=null){
     dump(request()->has('desc'));
 });
 
-Route::get('/instructors', 'InstructorController@index');
+Route::get('instructors', 'InstructorController@index');
+Route::get('instructors/create', 'InstructorController@create');
+Route::post('instructors', 'InstructorController@store');

@@ -36,5 +36,14 @@ class InstructorController extends Controller
         $pageTitle = "Instructors";
 
         return view('instructors.index', compact('pageTitle', 'result'));
-    }   
+    }  
+    
+    public function create(){
+        return view('instructors.create');
+    }
+
+    // Store instructor data in database
+    public function store(){
+        dd("hh");
+    }
 }
