@@ -39,6 +39,22 @@ Route::get('/users/{id?}', function($id=null){
     dump(request()->has('desc'));
 });
 
-Route::get('instructors', 'InstructorController@index');
-Route::get('instructors/create', 'InstructorController@create');
-Route::post('instructors', 'InstructorController@store');
+// Instructor routes
+Route::group(['prefix' => 'instructors'], function(){
+    $controller = "InstructorController@";
+
+    // Route naming with middleware
+    Route::get('/', $controller.'index')->name('instructors')->middleware('mine');
+    
+    Route::get('/{id}', $controller.'show')->name('instructors.show');
+    Route::get('/{id}/edit', $controller.'edit')->name('instructors.edit');
+    Route::post('/{id}/update', $controller.'update')->name('instructors.update');
+    Route::post('/{id}/destroy', $controller.'destroy')->name('instructors.destroy');
+    Route::get('/create', $controller.'create')->name('instructors.create');
+    Route::post('/', $controller.'store')->name('instructors.store');
+});
+
+// Course routes
+Route::get('courses', 'CourseController@index');
+Route::get('courses/create', 'CourseController@create');
+Route::post('courses', 'CourseController@store');

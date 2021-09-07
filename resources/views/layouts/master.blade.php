@@ -46,7 +46,16 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-  @yield('content')
+        @php 
+          // dump(request()->query());
+          // dump(request()->is('instructors'));
+          // dump(request()->segments());
+
+          // dump(route('instructors'));
+          // dump(route('instructors.create'));
+        @endphp 
+        @include('layouts.messages')
+        @yield('content')
       </div>
     </section>
   <!-- /.content-wrapper -->
