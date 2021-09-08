@@ -45,12 +45,11 @@ Route::group(['prefix' => 'instructors'], function(){
 
     // Route naming with middleware
     Route::get('/', $controller.'index')->name('instructors')->middleware('mine');
-    
+    Route::get('/create', $controller.'create')->name('instructors.create');
     Route::get('/{id}', $controller.'show')->name('instructors.show');
     Route::get('/{id}/edit', $controller.'edit')->name('instructors.edit');
     Route::post('/{id}/update', $controller.'update')->name('instructors.update');
     Route::post('/{id}/destroy', $controller.'destroy')->name('instructors.destroy');
-    Route::get('/create', $controller.'create')->name('instructors.create');
     Route::post('/', $controller.'store')->name('instructors.store');
 });
 
